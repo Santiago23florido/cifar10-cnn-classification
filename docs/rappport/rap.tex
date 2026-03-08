@@ -1,0 +1,60 @@
+\documentclass[conference]{IEEEtran}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{url}
+
+\begin{document}
+
+\title{Classification bay\'esienne supervis\'ee de pixels : analyse des espaces colorim\'etriques RGB, HSV et Y$'$CbCr}
+
+\author{
+    \IEEEauthorblockN{1\textsuperscript{st} Jair Anderson Vasquez Torres}
+    \IEEEauthorblockA{\textit{Ingénieur Degree Programme STIC} \\
+    \textit{ENSTA Paris}\\
+    Paris, France \\
+    jair-anderson.vasquez@ensta.fr}
+    \and
+    \IEEEauthorblockN{2\textsuperscript{nd} Santiago Florido Gomez}
+    \IEEEauthorblockA{\textit{Ingénieur Degree Programme STIC} \\
+    \textit{ENSTA Paris}\\
+    Paris, France \\
+    santiago.florido@ensta-paris.fr}
+}
+
+\maketitle
+
+\begin{abstract}
+Ce travail pr\'esente un cadre de classification bay\'esienne supervis\'ee appliqu\'e \`a la segmentation de pixels en imagerie couleur. L'article formalise les crit\`eres de d\'ecision Maximum A Posteriori (MAP) et Maximum Vraisemblance (ML), puis \'etudie le r\^ole du choix de l'espace d'observation dans la s\'eparabilit\'e statistique des classes. Trois repr\'esentations colorim\'etriques sont analys\'ees : RGB, HSV et Y$'$CbCr. Nous d\'ecrivons leurs transformations, leurs propri\'et\'es pertinentes pour l'inf\'erence probabiliste, et l'extraction op\'erationnelle de leurs composantes au moyen d'une impl\'ementation Python/OpenCV. Les visualisations et canaux export\'es (\texttt{R,G,B}, \texttt{H,S,V}, \texttt{Y',Cb,Cr}) fournissent une base reproductible pour la construction de mod\`eles bay\'esiens de classification de pixels et la comparaison de performances entre espaces colorim\'etriques.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Classification bay\'esienne, Maximum A Posteriori, Maximum Vraisemblance, segmentation de pixels, RGB, HSV, Y$'$CbCr, OpenCV.
+\end{IEEEkeywords}
+
+\input{sections/Bayesienne.tex}
+
+\begin{thebibliography}{00}
+    
+\bibitem{onera_ensta_estimateur_bayesien_slides}
+ONERA and ENSTA ParisTech, ``Estimation et Identification statistiques --- Cours 2 : Estimateur Bayésien,'' course slides (PDF), Sept. 13, 2023, accessed Feb. 18, 2026. [Course material]. Provided by the user.
+
+\bibitem{yuille_bayes_decision_theory}
+A. Yuille, ``Lecture 2. Bayes Decision Theory,'' course Stat 161/261, Johns Hopkins University, Spring 2014, accessed Feb. 18, 2026. [Online]. Available: \url{https://www.cs.jhu.edu/~ayuille1/courses/Stat161-261-Spring14/RevisedLectureNotes2.pdf}
+
+\bibitem{opencv_color_conversions}
+OpenCV, ``Color Space Conversions,'' OpenCV Documentation, version 3.4, accessed Mar. 7, 2026. [Online]. Available: \url{https://docs.opencv.org/3.4/d8/d01/group__imgproc__color__conversions.html}
+
+\bibitem{smith_color_gamut_transform_pairs}
+A. R. Smith, ``Color Gamut Transform Pairs,'' in \textit{SIGGRAPH '78 Conference Proceedings}, Aug. 1978, pp. 12--19, accessed Mar. 7, 2026. [Online]. Available: \url{https://alvyray.com/Papers/CG/color78.pdf}
+
+\bibitem{opencv_color_conversions}
+OpenCV, ``Color conversions,'' OpenCV Documentation, version 3.4.20-dev, accessed Mar. 7, 2026. [Online]. Available: \url{https://docs.opencv.org/3.4/de/d25/imgproc_color_conversions.html}
+
+\bibitem{opencv_ycrcb_conversion}
+OpenCV, ``Color conversions,'' OpenCV Documentation, version 3.4.20-dev, accessed Mar. 7, 2026. [Online]. Available: \url{https://docs.opencv.org/3.4/de/d25/imgproc_color_conversions.html}
+\end{thebibliography}
+
+\end{document}

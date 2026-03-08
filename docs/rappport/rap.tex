@@ -33,28 +33,119 @@ Ce travail pr\'esente un cadre de classification bay\'esienne supervis\'ee appli
 \begin{IEEEkeywords}
 Classification bay\'esienne, Maximum A Posteriori, Maximum Vraisemblance, segmentation de pixels, RGB, HSV, Y$'$CbCr, OpenCV.
 \end{IEEEkeywords}
+\section{Convolutional neural networks et CIFAR-10}
+Dans le contexte de la classification d’images, les réseaux de neurones convolutionnels se sont consolidés comme l’une des architectures les plus adaptées à l’analyse des données visuelles, car ils permettent l’extraction automatique de caractéristiques spatiales hiérarchiques à partir des données d’entrée. Un réseau neuronal implémenté peut être modélisé comme une application composée
+\begin{equation}
+f_{\theta}:\mathbb{R}^{H\times W\times C}\rightarrow \mathbb{R}^{K},
+\label{eq:cnn_mapping}
+\end{equation}
+où $H$ et $W$ sont la hauteur et la largeur de l’image, $C$ est le nombre de canaux, $K$ est le nombre de classes et $\theta$ désigne l’ensemble des paramètres entraînables.
 
+Cette architecture remplace la connexion dense d’un réseau totalement connecté par une structure à champs réceptifs locaux, partage de poids et extraction hiérarchique de caractéristiques. Une CNN est organisée en plusieurs étapes, et chaque étape contient essentiellement une couche de filtres, une non-linéarité et une opération de réduction ou de \textit{pooling} sur des cartes de caractéristiques \cite{lecun_convolutional_networks}.
+
+Soit $a^{(0)}=x$ l’entrée. Dans une couche convolutionnelle $l$, si l’entrée possède $C_{l-1}$ cartes et la sortie possède $C_l$ cartes, l’opération peut s’écrire
+\begin{equation}
+z^{(l)}_{i,j,m}
+=
+b^{(l)}_{m}
++
+\sum_{c=1}^{C_{l-1}}
+\sum_{u=0}^{k_h-1}
+\sum_{v=0}^{k_w-1}
+K^{(l)}_{u,v,c,m}\,
+a^{(l-1)}_{i+u,\;j+v,\;c},
+\label{eq:conv_layer}
+\end{equation}
+et, après la convolution, une non-linéarité ponctuelle est appliquée :
+\begin{equation}
+a^{(l)}_{i,j,m}
+=
+\phi\!\left(z^{(l)}_{i,j,m}\right).
+\label{eq:nonlinearity}
+\end{equation}
+
+La dimension spatiale de la sortie d’une convolution avec pas (\textit{stride}) $s$ et remplissage (\textit{padding}) $p$ est donnée par
+\begin{equation}
+H_l=
+\left\lfloor
+\frac{H_{l-1}+2p_h-k_h}{s_h}
+\right\rfloor+1,
+\qquad
+W_l=
+\left\lfloor
+\frac{W_{l-1}+2p_w-k_w}{s_w}
+\right\rfloor+1.
+\label{eq:conv_output_size}
+\end{equation}
+Cela permet de contrôler la résolution spatiale à mesure que le signal traverse le réseau.
+
+Si un réseau possède plusieurs couches, le champ réceptif effectif d’un neurone dans les couches profondes croît avec la profondeur. Une manière utile de le modéliser est donnée par la récurrence
+\begin{equation}
+R_1=k_1,
+\qquad
+R_l=R_{l-1}+(k_l-1)\prod_{t=1}^{l-1}s_t,
+\label{eq:receptive_field}
+\end{equation}
+où $R_l$ est la taille du champ réceptif effectif dans la couche $l$.
+
+L’un des principaux avantages quantitatifs de la convolution est son efficacité paramétrique. Si une couche convolutionnelle possède $C_{\text{in}}$ canaux d’entrée, $C_{\text{out}}$ canaux de sortie et des filtres de taille $k_h\times k_w$, alors le nombre de paramètres est
+\begin{equation}
+N_{\text{params}}^{\text{conv}}
+=
+\left(k_hk_wC_{\text{in}}+1\right)C_{\text{out}}.
+\label{eq:conv_params}
+\end{equation}
+En revanche, une couche dense reliant une entrée de taille $n_{\text{in}}$ à une sortie de taille $n_{\text{out}}$ possède
+\begin{equation}
+N_{\text{params}}^{\text{fc}}
+=
+\left(n_{\text{in}}+1\right)n_{\text{out}}.
+\label{eq:fc_params}
+\end{equation}
+
+Cette différence constitue un élément significatif dans la classification automatique d’images, puisqu’une image d’entrée peut contenir des milliers de variables, tandis que la convolution exploite leurs caractéristiques structurelles en évitant une croissance explosive du nombre de poids.
+
+Dans l’étape finale de classification, la représentation obtenue par les couches convolutionnelles est aplatie ou agrégée globalement afin de produire un vecteur $h\in\mathbb{R}^{d}$. Ensuite, une couche affine calcule
+\begin{equation}
+z=Wh+b,
+\qquad
+z\in\mathbb{R}^{K},
+\label{eq:affine_classifier}
+\end{equation}
+et la probabilité estimée pour la classe $k$ est obtenue au moyen de la fonction \textit{softmax} :
+\begin{equation}
+\hat{y}_k=
+\frac{e^{z_k}}{\sum_{j=1}^{K}e^{z_j}}.
+\label{eq:softmax}
+\end{equation}
+\cite{lecun_convolutional_networks}
+
+Il est proposé d’utiliser la base de données CIFAR-10, largement employée dans l’évaluation des algorithmes de classification d’images, qui contient $60\,000$ images RGB de $32\times 32$ pixels réparties en $10$ classes, avec $6\,000$ images par classe. La partition standard comprend $50\,000$ images pour l’entraînement et $10\,000$ pour le test ; de plus, l’ensemble de test contient exactement $1\,000$ images par classe et l’ensemble d’entraînement en contient $5\,000$ par classe. Les classes sont \textit{airplane}, \textit{automobile}, \textit{bird}, \textit{cat}, \textit{deer}, \textit{dog}, \textit{frog}, \textit{horse}, \textit{ship} et \textit{truck} \cite{cifar10_dataset}, ce qui représente un scénario adéquat pour l’analyse des éléments fondamentaux de l’apprentissage profond avec des exigences computationnelles modérées.
+
+Comme une partie de l’objectif de recherche consiste également à étudier de manière contrôlée l’influence de la préparation des données, de la définition de l’architecture, de la sélection des hyperparamètres et de la définition de la dynamique d’apprentissage sur la performance idéale du modèle implémenté, ce cadre expérimental se révèle particulièrement pertinent.
 \input{sections/Bayesienne.tex}
 
 \begin{thebibliography}{00}
     
+\bibitem{lecun_convolutional_networks}
+Y. LeCun, ``Convolutional Networks and Applications in Vision,'' presented at ISCAS 2010, accessed Mar. 8, 2026. [Online]. Available: \url{https://cseweb.ucsd.edu/~gary/cs200/s12/lecun-iscas-10.pdf}
+
+\bibitem{cifar10_dataset}
+A. Krizhevsky, ``Learning Multiple Layers of Features from Tiny Images,'' CIFAR-10 dataset page, accessed Mar. 8, 2026. [Online]. Available: \url{https://www.cs.toronto.edu/~kriz/cifar.html}
+
 \bibitem{onera_ensta_estimateur_bayesien_slides}
-ONERA and ENSTA ParisTech, ``Estimation et Identification statistiques --- Cours 2 : Estimateur Bayésien,'' course slides (PDF), Sept. 13, 2023, accessed Feb. 18, 2026. [Course material]. Provided by the user.
+ONERA and ENSTA ParisTech, ``Estimation et Identification statistiques --- Cours 2 : Estimateur Bay\'esien,'' course slides (PDF), Sept. 13, 2023, accessed Mar. 8, 2026. [Course material]. Provided by the user.
 
 \bibitem{yuille_bayes_decision_theory}
-A. Yuille, ``Lecture 2. Bayes Decision Theory,'' course Stat 161/261, Johns Hopkins University, Spring 2014, accessed Feb. 18, 2026. [Online]. Available: \url{https://www.cs.jhu.edu/~ayuille1/courses/Stat161-261-Spring14/RevisedLectureNotes2.pdf}
+A. Yuille, ``Lecture 2. Bayes Decision Theory,'' course Stat 161/261, Johns Hopkins University, Spring 2014, accessed Mar. 8, 2026. [Online]. Available: \url{https://www.cs.jhu.edu/~ayuille1/courses/Stat161-261-Spring14/RevisedLectureNotes2.pdf}
 
 \bibitem{opencv_color_conversions}
-OpenCV, ``Color Space Conversions,'' OpenCV Documentation, version 3.4, accessed Mar. 7, 2026. [Online]. Available: \url{https://docs.opencv.org/3.4/d8/d01/group__imgproc__color__conversions.html}
+OpenCV, ``Color Space Conversions,'' OpenCV Documentation, version 3.4, accessed Mar. 8, 2026. [Online]. Available: \url{https://docs.opencv.org/3.4/d8/d01/group__imgproc__color__conversions.html}
 
 \bibitem{smith_color_gamut_transform_pairs}
-A. R. Smith, ``Color Gamut Transform Pairs,'' in \textit{SIGGRAPH '78 Conference Proceedings}, Aug. 1978, pp. 12--19, accessed Mar. 7, 2026. [Online]. Available: \url{https://alvyray.com/Papers/CG/color78.pdf}
-
-\bibitem{opencv_color_conversions}
-OpenCV, ``Color conversions,'' OpenCV Documentation, version 3.4.20-dev, accessed Mar. 7, 2026. [Online]. Available: \url{https://docs.opencv.org/3.4/de/d25/imgproc_color_conversions.html}
+A. R. Smith, ``Color Gamut Transform Pairs,'' in \textit{SIGGRAPH '78 Conference Proceedings}, Aug. 1978, pp. 12--19, accessed Mar. 8, 2026. [Online]. Available: \url{https://alvyray.com/Papers/CG/color78.pdf}
 
 \bibitem{opencv_ycrcb_conversion}
-OpenCV, ``Color conversions,'' OpenCV Documentation, version 3.4.20-dev, accessed Mar. 7, 2026. [Online]. Available: \url{https://docs.opencv.org/3.4/de/d25/imgproc_color_conversions.html}
+OpenCV, ``Color conversions,'' OpenCV Documentation, version 3.4.20-dev, accessed Mar. 8, 2026. [Online]. Available: \url{https://docs.opencv.org/3.4/de/d25/imgproc_color_conversions.html}
 \end{thebibliography}
-
 \end{document}

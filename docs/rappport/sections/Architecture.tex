@@ -1,0 +1,86 @@
+\section{Architecture du réseau}
+Dans cette architecture, on définit un réseau de neurones convolutionnel séquentiel composé d’une étape d’extraction de caractéristiques locales au moyen de la convolution, suivie de réductions dimensionnelles par \textit{max pooling}. La couche d’entrée est définie pour un tenseur d’entrée $32\times 32\times 3$,
+où $32$ est la hauteur, $32$ la largeur et $3$ le nombre de canaux de couleur $(R,G,B)$. Cette couche n’apprend pas de paramètres ; elle fixe uniquement la forme attendue des données d’entrée du modèle \cite{keras_input_object}.
+
+Ensuite, une première couche convolutionnelle est définie pour la première extraction des caractéristiques. La couche apprend $8$ filtres distincts, ce qui implique qu’à sa sortie elle aura $8$ cartes de caractéristiques. Une dimension de noyau $(3,3)$ est définie, et l’argument \texttt{padding="same"} est incorporé dans la définition, ce qui permet de préserver la résolution spatiale de l’image, de sorte que la sortie conserve une hauteur et une largeur égales à celles de l’entrée. Par conséquent, la sortie de cette couche a la taille
+\begin{equation}
+32\times 32\times 8.
+\end{equation}
+
+Une couche de \textit{dropout} est ajoutée, laquelle remplit la fonction de mécanisme de régularisation durant l’entraînement en annulant aléatoirement une fraction des activations des entrées. Néanmoins, puisque la valeur du \textit{dropout} est fixée par défaut à zéro, la couche ne modifie ni l’information ni la dimension du tenseur. Sa sortie demeure
+\begin{equation}
+32\times 32\times 8.
+\end{equation}
+
+On ajoute une couche de \textit{max pooling} qui a un \textit{pool size} $(2,2)$, ce qui implique qu’elle réduit la résolution spatiale en prenant la valeur maximale dans chaque fenêtre locale $2\times 2$. De cette manière, la sortie de cette couche est
+\begin{equation}
+16\times 16\times 8.
+\end{equation}
+
+On ajoute ensuite une couche qui convertit le vecteur tridimensionnel en un vecteur unidimensionnel de dimension
+\begin{equation}
+16\cdot 16\cdot 8 = 2048,
+\end{equation}
+
+puis une transformation \textit{fully connected} est implémentée au moyen d’une couche dense vers un espace latent de $64$ neurones :
+\begin{equation}
+\mathbf{h}=\mathrm{ReLU}(W\mathbf{x}+\mathbf{b}).
+\end{equation}
+
+De sorte que la sortie de cette couche est de taille $64$, on ajoute une deuxième couche de \textit{dropout} dans laquelle le \textit{rate} est fixé à $0$, pour finalement inclure une couche dense supplémentaire vers un espace latent de dimension $10$. Dans cette occasion, l’activation \textit{softmax} transforme les scores en une distribution de probabilité :
+\begin{equation}
+\hat{y}_k=\frac{e^{z_k}}{\sum_{j=1}^{10} e^{z_j}},
+\qquad
+k=1,\dots,10.
+\end{equation}
+
+Par conséquent, chaque composante de la sortie appartient à l’intervalle $[0,1]$ et la somme de toutes est égale à $1$. La classe prédite est celle associée à l’indice ayant la probabilité la plus élevée :
+\begin{equation}
+\hat{c}=\arg\max_k \hat{y}_k.
+\end{equation}
+
+Enfin, il y a une dernière couche de \textit{dropout} avec un taux égal à $0$.
+
+Les paramètres entraînables sont ceux que le modèle met à jour durant l’entraînement au moyen de la rétropropagation et de l’optimisation, lesquels, dans le cas de la structure proposée, sont incorporés dans les couches convolutionnelles et denses, puisque des couches telles que \texttt{Input}, \texttt{Dropout}, \texttt{MaxPooling2D} et \texttt{Flatten} n’incorporent pas de paramètres entraînables dans leur définition. Dans le cas de la couche \texttt{Conv2D},
+
+\begin{equation}
+N_{\text{params}}=(k_h\cdot k_w\cdot C_{\text{in}}+1)\cdot C_{\text{out}},
+\end{equation}
+
+où $k_h$ et $k_w$ sont les dimensions du filtre, $C_{\text{in}}$ le nombre de canaux d’entrée, et $C_{\text{out}}$ le nombre de filtres de sortie. Ici,
+
+\begin{equation}
+k_h=3,\qquad k_w=3,\qquad C_{\text{in}}=3,\qquad C_{\text{out}}=8.
+\end{equation}
+
+Alors,
+
+\begin{equation}
+N_{\text{params}}=(3\cdot 3\cdot 3+1)\cdot 8=(27+1)\cdot 8=224.
+\end{equation}
+
+C’est-à-dire que cette couche possède $224$ paramètres entraînables, y compris le biais \cite{keras_conv2d}.
+
+Pour sa part, dans la couche dense avec biais,
+
+\begin{equation}
+N_{\text{params}}=(n_{\text{in}}+1)\cdot n_{\text{out}},
+\end{equation}
+
+où $n_{\text{in}}$ est le nombre d’entrées et $n_{\text{out}}$ le nombre de neurones de sortie. Dans le cas de la structure proposée, on a deux couches denses :
+
+\begin{equation}
+N_{\text{params}}=(2048+1)\cdot 64=2049\cdot 64=131136,
+\end{equation}
+
+et
+
+\begin{equation}
+N_{\text{params}}=(64+1)\cdot 10=650.
+\end{equation}
+
+Ainsi, le nombre total de paramètres entraînables est
+
+\begin{equation}
+224+131136+650=132010.
+\end{equation}

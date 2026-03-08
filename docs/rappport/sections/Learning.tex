@@ -1,0 +1,17 @@
+\section{Apprentissage}
+Un \textit{batch} est le sous-ensemble d’échantillons d’entraînement qui sont traités conjointement par le modèle à chaque itération, et le \textit{batch size} est le nombre d’échantillons utilisés dans la mise à jour des paramètres au moyen du calcul du gradient, c’est-à-dire qu’il s’agit du lot utilisé dans la mise à jour des paramètres \cite{keras_model_training_apis}.
+
+Un \textit{step} est défini comme une itération de l’entraînement qui est associée au traitement d’un \textit{batch}. Dans Keras, \texttt{steps\_per\_epoch} est utilisé comme le nombre total de \textit{steps} (lots d’échantillons) avant de considérer une époque comme terminée, et TensorFlow indique en outre que la fonction \texttt{train\_step} est appelée par \texttt{fit()} pour chaque lot de données. De cette manière, on peut considérer un \textit{step} comme le traitement d’un lot, son entraînement, ainsi que la mise à jour résultante de ce lot \cite{keras_model_training_apis}.
+
+Finalement, une époque est un passage complet effectué sur l’ensemble des données d’entraînement ; il s’agit donc du passage par l’ensemble des \textit{batches} nécessaires pour parcourir toute la base d’entraînement, à moins qu’un critère comme \texttt{steps\_per\_epoch} ne soit imposé \cite{keras_model_training_apis}.
+
+Les résultats obtenus suggèrent que le temps par époque diminue à mesure que la taille du \textit{batch} augmente, puisque le modèle traite davantage d’échantillons à chacun des \textit{steps}, ce qui fait que le nombre de \textit{steps} nécessaires pour parcourir l’ensemble du jeu d’entraînement est plus faible. La réduction est beaucoup plus significative lorsqu’on passe de \textit{batches} de très petite taille, en comparaison avec les variations observées pour des tailles intermédiaires, ce qui montre que le temps moyen par époque ne diminue pas linéairement lorsque l’on modifie la taille du \textit{batch}. Cela s’explique principalement par le fait que le temps par époque ne dépend pas uniquement du nombre de \textit{steps}, mais aussi du temps de chacun de ces \textit{steps}. Ainsi, à mesure que la taille du \textit{batch} augmente, le nombre de \textit{steps} nécessaires pour parcourir la base d’entraînement diminue, mais le coût de chacun des pas augmente, puisque le modèle doit effectuer davantage d’opérations de calcul et de mémoire, ce qui est la cause de cette dynamique non linéaire.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\linewidth]{imgs/output.png}
+\caption{Temps moyen d'entraînement par époque en fonction de la taille du \textit{batch}.}
+\label{fig:batch_size_epoch_time}
+\end{figure}
+
+En conséquence, le bénéfice initial est important lorsque le matériel est sous-utilisé, mais il devient progressivement plus faible à mesure que le traitement s’approche de ses limites d’efficacité et de mémoire, comme le montre la figure~\ref{fig:batch_size_epoch_time}.

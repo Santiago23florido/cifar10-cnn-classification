@@ -1,0 +1,17 @@
+
+
+\section{Structuration des données}
+\subsection{training, validation, test}
+La division de la base de données constitue un élément méthodologique propre à l’apprentissage supervisé, de manière à isoler l’information destinée à l’ajustement des paramètres, à la sélection du modèle et à l’évaluation du modèle entraîné. L’ensemble d’entraînement est utilisé pour l’estimation des paramètres du réseau, l’ensemble de validation a pour objectif de mesurer la généralisation du modèle sans intervenir directement dans les actualisations des paramètres, et, enfin, l’ensemble de test sert à obtenir une estimation indépendante et non biaisée de la performance du modèle sur des données qu’il n’a pas vues.
+
+L’objectif de cette séparation est d’éviter la fuite d’information, qui peut se produire lorsque les données d’évaluation du modèle ont été utilisées dans l’estimation des paramètres et dans la définition de celui-ci, afin de pouvoir disposer de véritables mesures de la capacité de généralisation du modèle entraîné.
+
+\subsection{ fonction standardize}
+La fonction \texttt{standardize} peut être comprise comme une standardisation spatiale réalisée image par image et canal par canal. Pour un ensemble d’images représenté par un tenseur $x\in\mathbb{R}^{N\times H\times W\times C}$, la fonction calcule, pour chaque image $n$ et pour chaque canal $c$, la moyenne $\mu_{n,c}$ et l’écart-type $\sigma_{n,c}$ sur les dimensions spatiales $(H,W)$, puis transforme chaque pixel selon l’expression~\eqref{eq:standardize_transform} :
+
+\begin{equation}
+x'_{n,i,j,c}=\frac{x_{n,i,j,c}-\mu_{n,c}}{\sigma_{n,c}}.
+\label{eq:standardize_transform}
+\end{equation}
+
+L’implication de cette implémentation est que chaque canal de chaque image est recentré autour de zéro et redimensionné de sorte que la dispersion soit aussi proche que possible d’une dispersion unitaire. Cet effet d’homogénéisation de l’entrée, en termes de son échelle numérique, facilite le processus d’optimisation et peut être utile pour accroître la stabilité de l’entraînement, car, en réduisant les différences globales d’intensité et de contraste entre les images, la standardisation diminue la variabilité non informative mais présente dans les données d’entrée, de manière à favoriser l’apprentissage par le réseau des motifs structurels les plus pertinents.

@@ -123,29 +123,29 @@ et la probabilité estimée pour la classe $k$ est obtenue au moyen de la foncti
 Il est proposé d’utiliser la base de données CIFAR-10, largement employée dans l’évaluation des algorithmes de classification d’images, qui contient $60\,000$ images RGB de $32\times 32$ pixels réparties en $10$ classes, avec $6\,000$ images par classe. La partition standard comprend $50\,000$ images pour l’entraînement et $10\,000$ pour le test ; de plus, l’ensemble de test contient exactement $1\,000$ images par classe et l’ensemble d’entraînement en contient $5\,000$ par classe. Les classes sont \textit{airplane}, \textit{automobile}, \textit{bird}, \textit{cat}, \textit{deer}, \textit{dog}, \textit{frog}, \textit{horse}, \textit{ship} et \textit{truck} \cite{cifar10_dataset}, ce qui représente un scénario adéquat pour l’analyse des éléments fondamentaux de l’apprentissage profond avec des exigences computationnelles modérées.
 
 Comme une partie de l’objectif de recherche consiste également à étudier de manière contrôlée l’influence de la préparation des données, de la définition de l’architecture, de la sélection des hyperparamètres et de la définition de la dynamique d’apprentissage sur la performance idéale du modèle implémenté, ce cadre expérimental se révèle particulièrement pertinent.
-\input{sections/Bayesienne.tex}
 
+
+\input{sections/DonneStruct.tex}
+\input{sections/Architecture.tex}
+\input{sections/Learning.tex}
 \begin{thebibliography}{00}
     
+\bibitem{keras_input_layer}
+Keras, ``Input object,'' Keras 3 API documentation, accessed Mar. 8, 2026. [Online]. Available: \url{https://keras.io/api/layers/core_layers/input/}
+
 \bibitem{lecun_convolutional_networks}
-Y. LeCun, ``Convolutional Networks and Applications in Vision,'' presented at ISCAS 2010, accessed Mar. 8, 2026. [Online]. Available: \url{https://cseweb.ucsd.edu/~gary/cs200/s12/lecun-iscas-10.pdf}
+Y. LeCun, K. Kavukcuoglu, and C. Farabet, ``Convolutional Networks and Applications in Vision,'' presented at ISCAS 2010, accessed Mar. 8, 2026. [Online]. Available: \url{https://cseweb.ucsd.edu/~gary/cs200/s12/lecun-iscas-10.pdf}
 
 \bibitem{cifar10_dataset}
-A. Krizhevsky, ``Learning Multiple Layers of Features from Tiny Images,'' CIFAR-10 dataset page, accessed Mar. 8, 2026. [Online]. Available: \url{https://www.cs.toronto.edu/~kriz/cifar.html}
+A. Krizhevsky, ``CIFAR-10 and CIFAR-100 datasets,'' accessed Mar. 8, 2026. [Online]. Available: \url{https://www.cs.toronto.edu/~kriz/cifar.html}
 
-\bibitem{onera_ensta_estimateur_bayesien_slides}
-ONERA and ENSTA ParisTech, ``Estimation et Identification statistiques --- Cours 2 : Estimateur Bay\'esien,'' course slides (PDF), Sept. 13, 2023, accessed Mar. 8, 2026. [Course material]. Provided by the user.
+\bibitem{keras_conv2d}
+Keras, ``Conv2D layer,'' Keras 3 API documentation, accessed Mar. 8, 2026. [Online]. Available: \url{https://keras.io/api/layers/convolution_layers/convolution2d/}
 
-\bibitem{yuille_bayes_decision_theory}
-A. Yuille, ``Lecture 2. Bayes Decision Theory,'' course Stat 161/261, Johns Hopkins University, Spring 2014, accessed Mar. 8, 2026. [Online]. Available: \url{https://www.cs.jhu.edu/~ayuille1/courses/Stat161-261-Spring14/RevisedLectureNotes2.pdf}
+\bibitem{keras_model_training_apis}
+Keras, ``Model training APIs,'' Keras 3 API documentation, accessed Mar. 8, 2026. [Online]. Available: \url{https://keras.io/api/models/model_training_apis/}
 
-\bibitem{opencv_color_conversions}
-OpenCV, ``Color Space Conversions,'' OpenCV Documentation, version 3.4, accessed Mar. 8, 2026. [Online]. Available: \url{https://docs.opencv.org/3.4/d8/d01/group__imgproc__color__conversions.html}
-
-\bibitem{smith_color_gamut_transform_pairs}
-A. R. Smith, ``Color Gamut Transform Pairs,'' in \textit{SIGGRAPH '78 Conference Proceedings}, Aug. 1978, pp. 12--19, accessed Mar. 8, 2026. [Online]. Available: \url{https://alvyray.com/Papers/CG/color78.pdf}
-
-\bibitem{opencv_ycrcb_conversion}
-OpenCV, ``Color conversions,'' OpenCV Documentation, version 3.4.20-dev, accessed Mar. 8, 2026. [Online]. Available: \url{https://docs.opencv.org/3.4/de/d25/imgproc_color_conversions.html}
+\bibitem{keras_input_object}
+Keras, ``Input object,'' Keras 3 API documentation, accessed Mar. 8, 2026. [Online]. Available: \url{https://keras.io/api/layers/core_layers/input/}
 \end{thebibliography}
 \end{document}

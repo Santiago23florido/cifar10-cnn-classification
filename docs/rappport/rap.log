@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.11.6)  8 MAR 2026 13:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.11.6)  8 MAR 2026 13:46
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -274,103 +274,12 @@ Underfull \hbox (badness 1661) in paragraph at lines 108--109
 []\T1/ptm/m/n/10 Dans l'étape fi-nale de clas-si-fi-ca-tion, la représen-ta-tion
  []
 
-(./sections/Bayesienne.tex [2]
-Underfull \hbox (badness 4205) in paragraph at lines 113--114
-\T1/ptm/m/n/10 par clas-si-fi-ca-tion bayési-enne, la déf-i-ni-tion de l'espace
+(./sections/DonneStruct.tex
+Underfull \hbox (badness 6047) in paragraph at lines 7--8
+[]\T1/ptm/m/n/10 L'objectif de cette sé-pa-ra-tion est d'éviter la fuite
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 143--144
-[]\T1/ptm/m/n/10 alors l'opération \T1/pcr/m/n/10 cv2.cvtColor(img_bgr,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 143--144
-\T1/pcr/m/n/10 cv2.COLOR_BGR2RGB) \T1/ptm/m/n/10 [[]] est équiv-a-lente à la
- []
-
-
-Underfull \hbox (badness 2351) in paragraph at lines 157--158
-\T1/ptm/m/n/10 scalaires monoban-des, cor-re-spon-dant aux pro-jec-tions du
- []
-
-<../../../Tp2Images/Bayes/components_output/Parrots/rgb/original.png, id=26, 481.8pt x 349.305pt>
-File: ../../../Tp2Images/Bayes/components_output/Parrots/rgb/original.png Graphic file (type png)
-<use ../../../Tp2Images/Bayes/components_output/Parrots/rgb/original.png>
-Package pdftex.def Info: ../../../Tp2Images/Bayes/components_output/Parrots/rgb/original.png  used on input line 161.
-(pdftex.def)             Requested size: 57.95892pt x 42.01605pt.
-<../../../Tp2Images/Bayes/components_output/Parrots/rgb/R.png, id=27, 481.8pt x 349.305pt>
-File: ../../../Tp2Images/Bayes/components_output/Parrots/rgb/R.png Graphic file (type png)
-<use ../../../Tp2Images/Bayes/components_output/Parrots/rgb/R.png>
-Package pdftex.def Info: ../../../Tp2Images/Bayes/components_output/Parrots/rgb/R.png  used on input line 162.
-(pdftex.def)             Requested size: 57.95892pt x 42.01605pt.
-<../../../Tp2Images/Bayes/components_output/Parrots/rgb/G.png, id=28, 481.8pt x 349.305pt>
-File: ../../../Tp2Images/Bayes/components_output/Parrots/rgb/G.png Graphic file (type png)
-<use ../../../Tp2Images/Bayes/components_output/Parrots/rgb/G.png>
-Package pdftex.def Info: ../../../Tp2Images/Bayes/components_output/Parrots/rgb/G.png  used on input line 163.
-(pdftex.def)             Requested size: 57.95892pt x 42.01605pt.
-<../../../Tp2Images/Bayes/components_output/Parrots/rgb/B.png, id=29, 481.8pt x 349.305pt>
-File: ../../../Tp2Images/Bayes/components_output/Parrots/rgb/B.png Graphic file (type png)
-<use ../../../Tp2Images/Bayes/components_output/Parrots/rgb/B.png>
-Package pdftex.def Info: ../../../Tp2Images/Bayes/components_output/Parrots/rgb/B.png  used on input line 164.
-(pdftex.def)             Requested size: 57.95892pt x 42.01605pt.
-[3 <../../../Tp2Images/Bayes/components_output/Parrots/rgb/original.png (PNG copy)> <../../../Tp2Images/Bayes/components_output/Parrots/rgb/R.png (PNG copy)> <../../../Tp2Images/Bayes/components_output/Parrots/rgb/G.png (PNG copy)> <../../../Tp2Images/Bayes/components_output/Parrots/rgb/B.png (PNG copy)>]
-<../../../Tp2Images/Bayes/components_output/Parrots/hsv/original.png, id=35, 481.8pt x 349.305pt>
-File: ../../../Tp2Images/Bayes/components_output/Parrots/hsv/original.png Graphic file (type png)
-<use ../../../Tp2Images/Bayes/components_output/Parrots/hsv/original.png>
-Package pdftex.def Info: ../../../Tp2Images/Bayes/components_output/Parrots/hsv/original.png  used on input line 231.
-(pdftex.def)             Requested size: 57.95892pt x 42.01605pt.
-<../../../Tp2Images/Bayes/components_output/Parrots/hsv/H.png, id=36, 481.8pt x 349.305pt>
-File: ../../../Tp2Images/Bayes/components_output/Parrots/hsv/H.png Graphic file (type png)
-<use ../../../Tp2Images/Bayes/components_output/Parrots/hsv/H.png>
-Package pdftex.def Info: ../../../Tp2Images/Bayes/components_output/Parrots/hsv/H.png  used on input line 232.
-(pdftex.def)             Requested size: 57.95892pt x 42.01605pt.
-<../../../Tp2Images/Bayes/components_output/Parrots/hsv/S.png, id=37, 481.8pt x 349.305pt>
-File: ../../../Tp2Images/Bayes/components_output/Parrots/hsv/S.png Graphic file (type png)
-<use ../../../Tp2Images/Bayes/components_output/Parrots/hsv/S.png>
-Package pdftex.def Info: ../../../Tp2Images/Bayes/components_output/Parrots/hsv/S.png  used on input line 233.
-(pdftex.def)             Requested size: 57.95892pt x 42.01605pt.
-<../../../Tp2Images/Bayes/components_output/Parrots/hsv/V.png, id=38, 481.8pt x 349.305pt>
-File: ../../../Tp2Images/Bayes/components_output/Parrots/hsv/V.png Graphic file (type png)
-<use ../../../Tp2Images/Bayes/components_output/Parrots/hsv/V.png>
-Package pdftex.def Info: ../../../Tp2Images/Bayes/components_output/Parrots/hsv/V.png  used on input line 234.
-(pdftex.def)             Requested size: 57.95892pt x 42.01605pt.
-
-Underfull \hbox (badness 4001) in paragraph at lines 243--244
-[]\T1/ptm/m/n/10 La doc-u-men-ta-tion d'OpenCV décrit cette con-ver-sion
- []
-
-<../../../Tp2Images/Bayes/components_output/Parrots/ycbcr/original.png, id=39, 481.8pt x 349.305pt>
-File: ../../../Tp2Images/Bayes/components_output/Parrots/ycbcr/original.png Graphic file (type png)
-<use ../../../Tp2Images/Bayes/components_output/Parrots/ycbcr/original.png>
-Package pdftex.def Info: ../../../Tp2Images/Bayes/components_output/Parrots/ycbcr/original.png  used on input line 294.
-(pdftex.def)             Requested size: 57.95892pt x 42.01605pt.
-<../../../Tp2Images/Bayes/components_output/Parrots/ycbcr/Y.png, id=40, 481.8pt x 349.305pt>
-File: ../../../Tp2Images/Bayes/components_output/Parrots/ycbcr/Y.png Graphic file (type png)
-<use ../../../Tp2Images/Bayes/components_output/Parrots/ycbcr/Y.png>
-Package pdftex.def Info: ../../../Tp2Images/Bayes/components_output/Parrots/ycbcr/Y.png  used on input line 295.
-(pdftex.def)             Requested size: 57.95892pt x 42.01605pt.
-<../../../Tp2Images/Bayes/components_output/Parrots/ycbcr/Cb.png, id=41, 481.8pt x 349.305pt>
-File: ../../../Tp2Images/Bayes/components_output/Parrots/ycbcr/Cb.png Graphic file (type png)
-<use ../../../Tp2Images/Bayes/components_output/Parrots/ycbcr/Cb.png>
-Package pdftex.def Info: ../../../Tp2Images/Bayes/components_output/Parrots/ycbcr/Cb.png  used on input line 296.
-(pdftex.def)             Requested size: 57.95892pt x 42.01605pt.
-<../../../Tp2Images/Bayes/components_output/Parrots/ycbcr/Cr.png, id=42, 481.8pt x 349.305pt>
-File: ../../../Tp2Images/Bayes/components_output/Parrots/ycbcr/Cr.png Graphic file (type png)
-<use ../../../Tp2Images/Bayes/components_output/Parrots/ycbcr/Cr.png>
-Package pdftex.def Info: ../../../Tp2Images/Bayes/components_output/Parrots/ycbcr/Cr.png  used on input line 297.
-(pdftex.def)             Requested size: 57.95892pt x 42.01605pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 302--303
-[]\T1/ptm/m/n/10 L'utilisation ex-clu-sive de la couleur ren-voie à
- []
-
-[4 <../../../Tp2Images/Bayes/components_output/Parrots/hsv/original.png (PNG copy)> <../../../Tp2Images/Bayes/components_output/Parrots/hsv/H.png (PNG copy)> <../../../Tp2Images/Bayes/components_output/Parrots/hsv/S.png (PNG copy)> <../../../Tp2Images/Bayes/components_output/Parrots/hsv/V.png (PNG copy)> <../../../Tp2Images/Bayes/components_output/Parrots/ycbcr/original.png (PNG copy)> <../../../Tp2Images/Bayes/components_output/Parrots/ycbcr/Y.png (PNG copy)> <../../../Tp2Images/Bayes/components_output/Parrots/ycbcr/Cb.png (PNG copy)> <../../../Tp2Images/Bayes/components_output/Parrots/ycbcr/Cr.png (PNG copy)>]
-Overfull \hbox (45.04855pt too wide) detected at line 468
-[]\OML/cmm/m/it/10 I\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x[] \OT1/cmr/m/n/10 + \OML/cmm/m/it/10 "; y[] \OT1/cmr/m/n/10 + \OML/cmm/m/it/10 ^^Q\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ^^Y \OML/cmm/m/it/10 I\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x[]; y[]\OT1/cmr/m/n/10 ) + \OMS/cmsy/m/n/10 r\OML/cmm/m/it/10 I\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x[]; y[]\OT1/cmr/m/n/10 ) [] + [] [] \OML/cmm/m/it/10 H[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x[]; y[]\OT1/cmr/m/n/10 ) [] \OML/cmm/m/it/10 ;
- []
-
-[5])
+)
 Underfull \hbox (badness 6961) in paragraph at lines 140--141
 []\T1/ptm/m/n/8 A. Yuille, ``Lec-ture 2. Bayes De-ci-sion The-ory,'' course Stat
  []
@@ -391,25 +300,25 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[6] (./rap.aux)
+[2] (./rap.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 4047 strings out of 474222
- 66979 string characters out of 5748733
- 1945975 words of memory out of 5000000
- 26248 multiletter control sequences out of 15000+600000
- 679710 words of font info for 193 fonts, out of 8000000 for 9000
+ 3887 strings out of 474222
+ 59820 string characters out of 5748733
+ 1940975 words of memory out of 5000000
+ 26093 multiletter control sequences out of 15000+600000
+ 678162 words of font info for 188 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,11n,65p,1050b,324s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on rap.pdf (6 pages, 1790868 bytes).
+ 57i,11n,65p,1050b,322s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on rap.pdf (2 pages, 194961 bytes).
 PDF statistics:
- 131 PDF objects out of 1000 (max. 8388607)
- 72 compressed objects within 1 object stream
+ 102 PDF objects out of 1000 (max. 8388607)
+ 61 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 61 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

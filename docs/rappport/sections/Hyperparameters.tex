@@ -1,0 +1,94 @@
+\section{Hyperparam\`etres}
+
+\subsection{D\'efinition et distinction avec les param\`etres entra\^inables}
+Contrairement aux poids du r\'eseau, d\'etaill\'es \`a la Section~III, les hyperparam\`etres ne sont pas appris par r\'etropropagation. Ils sont fix\'es avant ou autour de l'apprentissage et d\'eterminent l'architecture, la fonction objective, le sch\'ema d'optimisation, le protocole d'entra\^inement et la r\'egularisation \cite{poly_chap4_classifml,manzanera_classification_apprentissage}. Les poids $W=\{w_{ij}\}$ et les biais des couches convolutionnelles et denses sont, au contraire, ajust\'es pendant l'optimisation selon les \`equations de la Section~4.
+
+Les quantit\'es de journalisation et de sauvegarde, telles que \texttt{verbose}, \texttt{filepath} ou les options de \texttt{ModelCheckpoint}, sont donc exclues de l'inventaire. Les tailles de sous-ensembles, les graines et le pr\'etraitement \texttt{standardize} influencent l'exp\'erience, mais ils sont trait\'es ici comme des conditions exp\'erimentales externes et non comme des hyperparam\`etres du mod\`ele au sens strict.
+
+\subsection{Inventaire analytique des hyperparam\`etres}
+L'inventaire est \`etabli directement \`a partir des appels du notebook et de la pipeline reproductible, en relevant explicitement des expressions telles que \texttt{Conv2D(filters=8, kernel\_size=(3,3), padding="same")}, \texttt{units} (Dense cach\'ee), \texttt{compile(loss="categorical\_crossentropy", optimizer=...)} et \texttt{fit(..., batch\_size=..., epochs=..., shuffle=True)}. Pour gagner en pr\'ecision, les hyperparam\`etres sont distingu\'es entre hyperparam\`etres structurels impos\'es par la t\^ache, hyperparam\`etres ajustables de conception, hyperparam\`etres d'entra\^inement et hyperparam\`etres de r\'egularisation.
+
+\begin{table*}[t]
+\centering
+\caption{Inventaire d\'etaill\'e des hyperparam\`etres structurels, de conception et de r\'egularisation.}
+\label{tab:section5_structure_inventory}
+\scriptsize
+\begin{tabular}{|p{2.6cm}|p{3.5cm}|p{3.1cm}|p{6.9cm}|}
+\hline
+Nom dans le code & Nature pr\'ecise & Valeur retenue & Influence attendue \\
+\hline
+\texttt{shape} & structurel impos\'e par la t\^ache & $32\times 32\times 3$ & fixe la forme des donn\'ees d'entr\'ee et contraint la premi\`ere couche du r\'eseau \\
+\hline
+\texttt{units} (sortie) & structurel impos\'e par la t\^ache & $10$ sorties & impose la dimension de sortie du classifieur, donc le nombre de classes trait\'ees \\
+\hline
+nombre de couches \texttt{Conv2D} & ajustable de conception & $1$ couche convolutionnelle & fixe la profondeur de l'extraction locale et contribue \`a la croissance du champ r\'ecepteur effectif \\
+\hline
+\texttt{filters} & ajustable de conception & $8$ & modifie la largeur de la repr\'esentation convolutionnelle et le nombre de poids appris \\
+\hline
+\texttt{kernel\_size} & ajustable de conception & $(3,3)$ & contr\^ole le voisinage local explor\'e et participe directement au champ r\'ecepteur \\
+\hline
+\texttt{padding} & ajustable de conception & \texttt{same} & pr\'eserve la r\'esolution spatiale et conditionne la taille des tenseurs transmis aux couches suivantes \\
+\hline
+\texttt{pool\_size} & ajustable de conception & $(2,2)$ & r\'eduit la r\'esolution spatiale, le co\^ut calculatoire et agrandit le champ r\'ecepteur effectif des couches profondes \\
+\hline
+\texttt{Flatten} & ajustable de conception & \texttt{Flatten} & fixe la transition convolution/dense et donc la taille d'entr\'ee de la t\^ete de classification \\
+\hline
+\texttt{units} (Dense cach\'ee) & ajustable de conception & $64$ neurones & contr\^ole la largeur de la t\^ete dense et la capacit\'e expressive de la partie pleinement connect\'ee \\
+\hline
+\texttt{activation} (cach\'ee) & ajustable de conception & ReLU & introduit la non-lin\'earit\'e et limite en pratique l'att\'enuation du gradient dans les premi\`eres couches \\
+\hline
+\texttt{activation} (sortie) & ajustable de conception & softmax & rend la sortie compatible avec une interpr\'etation probabiliste et avec l'entropie crois\'ee \\
+\hline
+\texttt{rate} & r\'egularisation & $0.0$ & si le taux \`etait strictement positif, il r\'eduirait la co-adaptation des neurones ; ici son effet empirique est nul \\
+\hline
+\texttt{l2} & r\'egularisation & $\lambda_{L^2}=0.00$ & si le coefficient \`etait positif, il p\'enaliserait les poids trop grands ; ici son effet empirique est nul \\
+\hline
+\end{tabular}
+\end{table*}
+
+\begin{table*}[t]
+\centering
+\caption{Inventaire d\'etaill\'e des hyperparam\`etres d'entra\^inement.}
+\label{tab:section5_training_inventory}
+\scriptsize
+\begin{tabular}{|p{2.2cm}|p{2.7cm}|p{2.5cm}|p{3.7cm}|p{5.5cm}|}
+\hline
+Nom dans le code & Nature pr\'ecise & Valeur initiale & Valeurs explor\'ees / retenues & Influence attendue \\
+\hline
+\texttt{loss} & entra\^inement & \shortstack[l]{\texttt{categorical\_}\\\texttt{crossentropy}} & valeur conserv\'ee dans tout le protocole & d\'efinit la quantit\'e dont le gradient pilote l'apprentissage ; ici elle est adapt\'ee \`a une sortie softmax et \`a des labels one-hot \\
+\hline
+\texttt{optimizer} & entra\^inement & SGD & SGD, SGD+Momentum, Adam & modifie la dynamique de convergence, le lissage des gradients et la sensibilit\'e au pas d'apprentissage \\
+\hline
+\texttt{learning\_rate} & entra\^inement & $0.01$ & $0.01$ pour SGD/SGD+Momentum ; $0.001$ pour Adam & multiplie directement le gradient dans les mises \`a jour ; trop grand, il destabilise la descente ; trop faible, il ralentit la convergence \\
+\hline
+\texttt{momentum} & entra\^inement & $0.0$ & $0.0$ puis $0.9$ & ajoute une inertie directionnelle qui lisse les fluctuations du gradient entre deux mini-batches \\
+\hline
+\texttt{beta\_1} & entra\^inement & -- & $0.9$ pour Adam & contr\^ole le lissage du premier moment dans Adam \\
+\hline
+\texttt{beta\_2} & entra\^inement & -- & $0.999$ pour Adam & contr\^ole le lissage du second moment dans Adam \\
+\hline
+\texttt{epsilon} d'Adam & entra\^inement & -- & $10^{-7}$ pour Adam & stabilise num\'eriquement le d\'enominateur de l'update d'Adam ; il correspond au terme not\'e $\eta$ dans le rapport \\
+\hline
+\texttt{batch\_size} & entra\^inement & $32$ & $8$ ; puis $\{8,16,32,64,128\}$ ; $32$ retenu pour l'\'etude des optimiseurs & agit sur le bruit du gradient, le nombre d'updates par epoch et le compromis entre stabilit\'e et co\^ut calculatoire \\
+\hline
+\texttt{epochs} & entra\^inement & $20$ & $10$ ; puis $8$ retenu pour les comparaisons contr\^ol\'ees & fixe le budget d'apprentissage en passages sur la base et conditionne le niveau de convergence atteint \\
+\hline
+\texttt{shuffle} & entra\^inement & valeur par d\'efaut dans le notebook & \texttt{True} dans la pipeline reproductible & limite les effets d'ordre entre epochs et stabilise l'estimation du gradient stochastique \\
+\hline
+\end{tabular}
+\end{table*}
+
+Les tailles de sous-ensembles, les graines de partition ou d'initialisation et le pr\'etraitement \texttt{standardize} ne figurent pas dans les Tables~\ref{tab:section5_structure_inventory} et~\ref{tab:section5_training_inventory}. Ces quantit\'es modifient bien les conditions d'observation et la variance des r\'esultats, mais elles ne constituent pas des hyperparam\`etres sintonisables du mod\`ele lui-m\^eme.
+
+\subsection{Influence des principaux hyperparam\`etres sur l'apprentissage}
+\paragraph{Hyperparam\`etres d'optimisation.}
+Les hyperparam\`etres d'optimisation ont d\'ej\`a fait l'objet d'une \`etude empirique en Section~4 ; ils sont seulement replac\'es ici dans une typologie g\'en\'erale. Dans \eqref{eq:section4_batch_update}, le pas d'apprentissage $\epsilon$ multiplie directement le gradient. Un $\epsilon$ trop grand peut donc provoquer des oscillations ou faire franchir une zone de minimum ; un $\epsilon$ trop faible ralentit au contraire la convergence et augmente le co\^ut calculatoire. Le choix de l'optimiseur modifie ensuite la mani\`ere dont cette actualisation est liss\'ee ou repond\'er\'ee : le Momentum introduit une inertie directionnelle, tandis qu'Adam adapte localement l'amplitude des mises \`a jour. La taille du batch, le nombre d'epochs et \texttt{shuffle} gouvernent enfin le bruit du gradient, le budget d'actualisations et les effets d'ordre entre mini-batches.
+
+\paragraph{Hyperparam\`etres d'architecture.}
+Les hyperparam\`etres d'architecture d\'ej\`a d\'ecrits en Section~III deviennent ici des quantit\'es de conception ajustables. Augmenter le nombre de filtres ou la dimension de la couche dense accro\^it la capacit\'e de repr\'esentation du r\'eseau, mais aussi le nombre de poids \`a estimer. Le noyau convolutionnel et le \textit{pooling} contr\^olent en outre le champ r\'ecepteur effectif des neurones profonds : via \eqref{eq:receptive_field}, ils d\'eterminent la portion du contexte spatial initial que les derni\`eres couches peuvent analyser pour prendre une d\'ecision. Un champ r\'ecepteur trop petit limite l'acc\`es au contexte global, alors qu'un champ plus large favorise l'int\'egration spatiale au prix d'un co\^ut calculatoire et param\'etrique plus \`elev\'e.
+
+\paragraph{Hyperparam\`etres de r\'egularisation.}
+Le dropout et la p\'enalisation $L^2$ doivent \^etre analys\'es m\^eme lorsque leurs valeurs sont nulles dans le code. Un taux de dropout strictement positif force le r\'eseau \`a ne pas d\'ependre d'un petit nombre de neurones particuliers, ce qui limite la co-adaptation et r\'eduit le risque de sur-apprentissage. La p\'enalisation $L^2$, ou \textit{weight decay}, d\'ecourage les poids trop grands et tend \`a lisser le mod\`ele. Ces deux quantit\'es sont donc bien des hyperparam\`etres de r\'egularisation au sens du mod\`ele, mais elles ne participent pas aux r\'esultats observ\'es dans le protocole courant puisque leurs valeurs sont nulles.
+
+\subsection{Synth\`ese}
+La Section~V rel\`eve les hyperparam\`etres du projet un par un, avec leur nom exact dans le code, leur nature et leur influence attendue. Les hyperparam\`etres structurels impos\'es par la t\^ache doivent \^etre distingu\'es des hyperparam\`etres ajustables de conception, d'entra\^inement et de r\'egularisation. Les tailles de sous-ensembles, les graines et le pr\'etraitement conditionnent l'exp\'erience, mais ils rel\`event de conditions exp\'erimentales externes plut\^ot que d'hyperparam\`etres du mod\`ele lui-m\^eme.

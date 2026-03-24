@@ -8,7 +8,7 @@
 
 \begin{document}
 
-\title{Classification bay\'esienne supervis\'ee de pixels : analyse des espaces colorim\'etriques RGB, HSV et Y$'$CbCr}
+\title{Classification d'images sur CIFAR-10 par r\'eseaux de neurones convolutionnels : structuration des donn\'ees, apprentissage et interpr\'etation du mod\`ele}
 
 
 \author{
@@ -34,11 +34,11 @@
 \maketitle
 
 \begin{abstract}
-Ce travail pr\'esente un cadre de classification bay\'esienne supervis\'ee appliqu\'e \`a la segmentation de pixels en imagerie couleur. L'article formalise les crit\`eres de d\'ecision Maximum A Posteriori (MAP) et Maximum Vraisemblance (ML), puis \'etudie le r\^ole du choix de l'espace d'observation dans la s\'eparabilit\'e statistique des classes. Trois repr\'esentations colorim\'etriques sont analys\'ees : RGB, HSV et Y$'$CbCr. Nous d\'ecrivons leurs transformations, leurs propri\'et\'es pertinentes pour l'inf\'erence probabiliste, et l'extraction op\'erationnelle de leurs composantes au moyen d'une impl\'ementation Python/OpenCV. Les visualisations et canaux export\'es (\texttt{R,G,B}, \texttt{H,S,V}, \texttt{Y',Cb,Cr}) fournissent une base reproductible pour la construction de mod\`eles bay\'esiens de classification de pixels et la comparaison de performances entre espaces colorim\'etriques.
+Ce rapport \'etudie la classification supervis\'ee d'images de CIFAR-10 par r\'eseaux de neurones convolutionnels. L'analyse couvre d'abord la structuration des donn\'ees, la standardisation des images et la d\'efinition d'une architecture de r\'ef\'erence, puis l'\'etude de la dynamique d'apprentissage \`a travers l'effet de la taille du batch et du choix d'optimiseur. Un inventaire raisonn\'e des hyperparam\`etres du mod\`ele, de l'optimisation et du protocole est ensuite \'etabli. Le mod\`ele est alors approfondi par une architecture convolutionnelle plus profonde, \'evalu\'ee sous protocole contr\^ol\'e au moyen de courbes d'apprentissage, de m\'etriques de validation et de matrices de confusion. Le ph\'enom\`ene de sur-apprentissage est ensuite identifi\'e sur les courbes de co\^ut et analys\'e sous l'effet de m\'ecanismes de r\'egularisation. Enfin, des cartes d'activation de la premi\`ere couche et de couches profondes sont visualis\'ees, ainsi que leur \'evolution au cours de l'entra\^inement, afin d'interpr\'eter la hi\'erarchie de repr\'esentations apprises par le CNN.
 \end{abstract}
 
 \begin{IEEEkeywords}
-Classification bay\'esienne, Maximum A Posteriori, Maximum Vraisemblance, segmentation de pixels, RGB, HSV, Y$'$CbCr, OpenCV.
+Classification d'images, CIFAR-10, r\'eseaux de neurones convolutionnels, apprentissage supervis\'e, hyperparam\`etres, sur-apprentissage, r\'egularisation, cartes d'activation.
 \end{IEEEkeywords}
 \section{Convolutional neural networks et CIFAR-10}
 Dans le contexte de la classification d’images, les réseaux de neurones convolutionnels se sont consolidés comme l’une des architectures les plus adaptées à l’analyse des données visuelles, car ils permettent l’extraction automatique de caractéristiques spatiales hiérarchiques à partir des données d’entrée. Un réseau neuronal implémenté peut être modélisé comme une application composée

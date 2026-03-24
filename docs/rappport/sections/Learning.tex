@@ -7,13 +7,16 @@ W=\{w_{ij}\},
 \end{equation}
 sur l'ensemble d'apprentissage $A=\{(X_i,V_i)\}_{i=1}^{N}$, de mani\`ere \`a minimiser la loss empirique
 \begin{equation}
+\begin{aligned}
 L_A(W)
-=
+&=
 \frac{1}{N}
 \sum_{i=1}^{N}
-L\!\left(\mathrm{ForwardProp}(W,X_i),V_i\right),
-\qquad
-\widehat{W}=\arg\min_{W} L_A(W).
+L\!\left(\mathrm{ForwardProp}(W,X_i),V_i\right),\\
+\widehat{W}
+&=
+\arg\min_{W} L_A(W).
+\end{aligned}
 \label{eq:section4_training_objective}
 \end{equation}
 Lorsque $A$ est partitionn\'e en lots $A_b\subset A$, $|A_b|=B$, la loss associ\'ee \`a un lot est d\'efinie par

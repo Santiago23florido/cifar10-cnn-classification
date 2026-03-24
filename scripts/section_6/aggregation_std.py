@@ -1,0 +1,5 @@
+from .model import get_architecture_config, get_architecture_summary
+from .runtime import CLASS_NAMES, np
+
+def std(values: list[float]) -> float:
+    return float(np.std(values)) if values else 0.0

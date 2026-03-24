@@ -1,3 +1,4 @@
+# Section 5 shared references for notebook-side hyperparameter classification.
 NOTEBOOK_REFS = {
     "data_split": "TP3_CNN.ipynb / cell 10",
     "model": "TP3_CNN.ipynb / cell 16",

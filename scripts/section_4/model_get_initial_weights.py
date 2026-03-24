@@ -1,3 +1,4 @@
+# Section 4 model helper used by the notebook pipeline.
 from .randomness import set_global_seed
 from .runtime import (
     ADAM_EPSILON,

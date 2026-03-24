@@ -1,4 +1,5 @@
-﻿def markdown_table(headers: list[str], rows: list[list[str]]) -> str:
+# Section 7 visualization helper used by the notebook and report.
+def markdown_table(headers: list[str], rows: list[list[str]]) -> str:
     header_line = "| " + " | ".join(headers) + " |"
     separator_line = "| " + " | ".join(["---"] * len(headers)) + " |"
     row_lines = ["| " + " | ".join(str(item) for item in row) + " |" for row in rows]

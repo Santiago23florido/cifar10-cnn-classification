@@ -1,3 +1,4 @@
+# Shared constants for the notebook-driven Section 6 workflow.
 import json
 import math
 from pathlib import Path

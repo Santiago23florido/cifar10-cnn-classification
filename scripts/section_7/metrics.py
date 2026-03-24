@@ -1,3 +1,4 @@
+# Section 7 metric helper used by notebook summaries.
 import numpy as np
 
 

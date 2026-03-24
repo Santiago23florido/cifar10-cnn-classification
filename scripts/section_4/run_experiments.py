@@ -1,3 +1,4 @@
+# CLI entry point that mirrors the notebook Section 4 pipeline.
 import argparse
 
 from scripts.section_4 import DEFAULT_RESULTS_PATH, ensure_determinism, run_section4_pipeline

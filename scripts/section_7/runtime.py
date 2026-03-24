@@ -1,3 +1,4 @@
+# Shared constants for the notebook-driven Section 7 workflow.
 import json
 from pathlib import Path
 from typing import Any

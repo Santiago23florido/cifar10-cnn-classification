@@ -1,3 +1,4 @@
+# Section 6 aggregation helper used by notebook comparisons.
 from .model import get_architecture_config, get_architecture_summary
 from .runtime import CLASS_NAMES, np
 

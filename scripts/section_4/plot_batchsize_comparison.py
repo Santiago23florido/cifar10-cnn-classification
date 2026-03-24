@@ -1,3 +1,4 @@
+# Section 4 plotting script reused by the notebook and report.
 import argparse
 
 from scripts.section_4 import DEFAULT_RESULTS_PATH

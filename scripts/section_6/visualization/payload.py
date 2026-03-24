@@ -1,3 +1,4 @@
+# Section 6 visualization helper used by the notebook and report.
 from ..results import load_results
 from ..runtime import Any, Path
 

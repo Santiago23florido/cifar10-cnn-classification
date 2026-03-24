@@ -1,3 +1,4 @@
+# Section 5 formatting helper used by the notebook summaries.
 from typing import Any
 from .inventory import (
     get_experimental_conditions,

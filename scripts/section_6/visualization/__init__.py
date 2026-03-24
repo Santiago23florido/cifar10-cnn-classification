@@ -1,3 +1,4 @@
+# Notebook imports for Section 6 visual summaries.
 from .figures import (
     draw_confusion,
     save_all_section6_figures,

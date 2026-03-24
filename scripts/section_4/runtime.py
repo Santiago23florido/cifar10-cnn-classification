@@ -1,3 +1,4 @@
+# Shared constants for the notebook-driven Section 4 workflow.
 import json
 import math
 import os

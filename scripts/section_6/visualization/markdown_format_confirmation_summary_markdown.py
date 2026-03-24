@@ -1,3 +1,4 @@
+# Section 6 visualization helper used by the notebook and report.
 from ..runtime import np
 
 from .markdown__format_comparison_table import _format_comparison_table

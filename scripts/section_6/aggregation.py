@@ -1,3 +1,4 @@
+# Section 6 aggregation helper used by notebook comparisons.
 from .aggregation_compute_confusion_matrices import compute_confusion_matrices
 from .aggregation_mean import mean
 from .aggregation_std import std

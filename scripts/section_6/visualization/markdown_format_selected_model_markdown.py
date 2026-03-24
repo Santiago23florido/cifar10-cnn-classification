@@ -1,3 +1,4 @@
+# Section 6 visualization helper used by the notebook and report.
 from ..runtime import np
 
 def format_selected_model_markdown(payload: dict) -> str:

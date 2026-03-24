@@ -1,3 +1,4 @@
+# Section 7 visualization helper used by the notebook and report.
 import matplotlib
 
 matplotlib.use("Agg")

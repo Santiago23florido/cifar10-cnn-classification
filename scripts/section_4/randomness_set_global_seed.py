@@ -1,3 +1,4 @@
+# Section 4 randomness helper used to keep notebook runs reproducible.
 from .runtime import keras_utils, np, random, tf
 
 def set_global_seed(seed: int) -> None:

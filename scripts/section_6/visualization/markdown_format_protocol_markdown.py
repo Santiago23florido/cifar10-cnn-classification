@@ -1,3 +1,4 @@
+# Section 6 visualization helper used by the notebook and report.
 from ..runtime import np
 
 from .markdown_markdown_table import markdown_table

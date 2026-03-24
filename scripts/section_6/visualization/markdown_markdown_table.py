@@ -1,3 +1,4 @@
+# Section 6 visualization helper used by the notebook and report.
 from ..runtime import np
 
 def markdown_table(headers: list[str], rows: list[list[str]]) -> str:

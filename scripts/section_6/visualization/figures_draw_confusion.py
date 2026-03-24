@@ -1,3 +1,4 @@
+# Section 6 visualization helper used by the notebook and report.
 import matplotlib
 import matplotlib.pyplot as plt
 from ..runtime import Path, np

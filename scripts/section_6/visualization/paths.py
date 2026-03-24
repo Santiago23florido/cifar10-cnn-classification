@@ -1,3 +1,4 @@
+# Section 6 visualization helper used by the notebook and report.
 from ..runtime import REPO_ROOT, Path
 
 DEFAULT_FIGURE_DIR = REPO_ROOT / "docs" / "rappport" / "imgs"

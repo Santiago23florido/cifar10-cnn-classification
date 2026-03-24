@@ -1,3 +1,4 @@
+# Section 4 visualization helper used by the notebook and report.
 from ..runtime import Any, Path
 from .paths import DEFAULT_FIGURE_DIR
 from .payload import coerce_payload

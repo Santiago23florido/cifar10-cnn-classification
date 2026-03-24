@@ -1,3 +1,4 @@
+# Section 4 visualization helper used by the notebook and report.
 from .markdown_markdown_table import markdown_table
 
 def format_protocol_markdown(protocol: dict) -> str:

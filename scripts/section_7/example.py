@@ -1,3 +1,4 @@
+# Section 7 helper that reuses the Section 6 overfitting example.
 from scripts.section_6 import load_results as load_section6_results
 
 from .metrics import compute_overfitting_indicators

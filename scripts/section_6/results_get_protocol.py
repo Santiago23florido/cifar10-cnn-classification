@@ -1,3 +1,4 @@
+# Section 6 results helper used by the notebook pipeline.
 from .model import get_architecture_config, get_architecture_summary, get_dimension_summary
 from .runtime import (
     ARCHITECTURE_CONFIGS,

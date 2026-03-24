@@ -1,3 +1,4 @@
+# Section 4 summary helper used by notebook tables.
 def get_batch_summary_rows(payload: dict) -> list[dict[str, str]]:
     rows = []
     for row in payload["batch_size_study"]["summary"]:

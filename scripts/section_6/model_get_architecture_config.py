@@ -1,3 +1,4 @@
+# Section 6 architecture helper used by the notebook pipeline.
 from .runtime import (
     ARCHITECTURE_CONFIGS,
     Any,

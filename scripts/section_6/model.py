@@ -1,3 +1,4 @@
+# Section 6 architecture helper used by the notebook pipeline.
 from .model_get_architecture_config import get_architecture_config
 from .model_build_model import build_model
 from .model_shape_to_string import shape_to_string

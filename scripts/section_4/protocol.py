@@ -1,3 +1,4 @@
+# Shared Section 4 protocol constants used by the notebook pipeline.
 from .runtime import (
     BATCH_SIZES,
     BATCH_STUDY_EPOCHS,

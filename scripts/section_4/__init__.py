@@ -1,3 +1,4 @@
+# Notebook imports for the Section 4 workflow.
 from .data import (
     get_cifar_archive_path,
     load_cifar10_from_local_archive,

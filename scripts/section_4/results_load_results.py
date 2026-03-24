@@ -1,3 +1,4 @@
+# Section 4 results helper used by the notebook pipeline.
 from .data import load_reduced_cifar10
 from .experiments import run_batch_size_study, run_optimizer_study
 from .runtime import (

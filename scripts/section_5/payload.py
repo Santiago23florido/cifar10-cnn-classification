@@ -1,3 +1,4 @@
+# Section 5 payload builder used by notebook displays.
 from .inventory import (
     get_experimental_conditions,
     get_hyperparameter_inventory,

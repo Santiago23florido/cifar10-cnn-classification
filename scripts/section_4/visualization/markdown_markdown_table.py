@@ -1,3 +1,4 @@
+# Section 4 visualization helper used by the notebook and report.
 def markdown_table(headers: list[str], rows: list[list[str]]) -> str:
     header_line = "| " + " | ".join(headers) + " |"
     separator_line = "| " + " | ".join(["---"] * len(headers)) + " |"

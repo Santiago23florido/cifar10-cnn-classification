@@ -1,3 +1,4 @@
+# Section 6 training helper called from the notebook experiments.
 import math
 from .aggregation import aggregate_runs, compute_confusion_matrices, rank_architectures
 from .model import build_model, get_architecture_config, get_initial_weights

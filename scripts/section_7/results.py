@@ -1,3 +1,4 @@
+# Section 7 results helper used by the notebook pipeline.
 from pathlib import Path
 
 from .example import extract_overfitting_example

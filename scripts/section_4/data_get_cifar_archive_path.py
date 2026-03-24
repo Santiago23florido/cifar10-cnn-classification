@@ -1,3 +1,4 @@
+# Section 4 data helper reused by the notebook experiments.
 from .runtime import (
     Any,
     N_OTHER_SAMPLES,

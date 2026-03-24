@@ -1,3 +1,4 @@
+# Section 7 visualization helper used by the notebook and report.
 from scripts.section_4 import REPO_ROOT
 
 DEFAULT_FIGURE_DIR = REPO_ROOT / "docs" / "rappport" / "imgs"

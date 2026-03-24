@@ -1,3 +1,4 @@
+# Section 7 regularization study helper called from the notebook.
 from copy import deepcopy
 
 from scripts.section_6 import build_model, get_architecture_config, get_initial_weights, run_training

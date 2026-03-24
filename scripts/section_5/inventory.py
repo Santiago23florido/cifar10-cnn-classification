@@ -1,3 +1,4 @@
+# Section 5 inventory helper used by the notebook audit.
 from .inventory_inventory_item import inventory_item
 from .inventory_get_section5_audit import get_section5_audit
 from .inventory_get_trainable_parameter_summary import get_trainable_parameter_summary

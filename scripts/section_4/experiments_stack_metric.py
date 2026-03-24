@@ -1,3 +1,4 @@
+# Section 4 experiment helper called from the notebook.
 import math
 from .model import build_model, build_optimizer, get_initial_weights
 from .randomness import set_global_seed

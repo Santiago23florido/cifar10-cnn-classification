@@ -1,3 +1,4 @@
+# Section 4 timing callback used by notebook experiments.
 from .runtime import Callback, time
 
 

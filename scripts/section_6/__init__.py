@@ -1,3 +1,4 @@
+# Notebook imports for the Section 6 workflow.
 from .aggregation import aggregate_runs, compute_confusion_matrices, mean, rank_architectures, std
 from .model import (
     build_model,

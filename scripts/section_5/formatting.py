@@ -1,3 +1,4 @@
+# Section 5 formatting helper used by the notebook summaries.
 from .formatting_markdown_table import markdown_table
 from .formatting_format_audit_markdown import format_audit_markdown
 from .formatting_format_trainable_parameter_markdown import format_trainable_parameter_markdown

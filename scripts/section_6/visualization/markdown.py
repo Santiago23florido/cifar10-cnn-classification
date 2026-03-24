@@ -1,3 +1,4 @@
+# Section 6 visualization helper used by the notebook and report.
 from .markdown_markdown_table import markdown_table
 from .markdown_format_audit_markdown import format_audit_markdown
 from .markdown_format_protocol_markdown import format_protocol_markdown

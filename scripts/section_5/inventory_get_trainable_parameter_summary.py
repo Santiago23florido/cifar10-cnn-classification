@@ -1,3 +1,4 @@
+# Section 5 inventory helper used by the notebook audit.
 from __future__ import annotations
 from collections import defaultdict
 from typing import Any

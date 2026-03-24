@@ -1,3 +1,4 @@
+# Section 4 data helper reused by the notebook experiments.
 from .data_standardize import standardize
 from .data_get_cifar_archive_path import get_cifar_archive_path
 from .data_load_cifar_batch_from_tar import load_cifar_batch_from_tar

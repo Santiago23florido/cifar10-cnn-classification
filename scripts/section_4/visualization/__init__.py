@@ -1,3 +1,4 @@
+# Notebook imports for Section 4 visual summaries.
 from .api import save_all_section4_figures, save_batch_figures, save_optimizer_figures
 from .markdown import (
     format_batch_summary_markdown,
